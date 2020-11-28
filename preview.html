@@ -26,7 +26,7 @@
             <nav class="uk-navbar-container uk-navbar-center" uk-navbar>
                 <div class="uk-navbar-center">
                     <ul class="uk-navbar-nav">
-                        <li><a href="">Instagram TOP 9 of 2020</a></li>
+                        <li><a href="/">Instagram TOP 9 of 2020</a></li>
                     </ul>
                 </div>
             </nav>
@@ -61,6 +61,7 @@
 <script>
     const urlParams = new URLSearchParams(window.location.search);
     var username = urlParams.get('u');
+    var c = urlParams.get('c');
     var sources = [];
 
     $(document).ready(function () {
@@ -79,7 +80,7 @@
     function start() {
 
         $.ajax({
-            url: 'https://api.top9.space/v1/ig/' + username,
+            url: 'https://api.top9.space/v2/ig/' + username+"?c="+c,
             processData: false,
             contentType: false,
             type: 'GET',
@@ -94,6 +95,10 @@
 
                 show_preview_crop(resp.data);
 
+            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(textStatus);
+                console.log(errorThrown);
+                    window.location.href = '/';
             }
         });
     }

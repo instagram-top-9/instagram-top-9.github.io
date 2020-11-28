@@ -30,7 +30,7 @@
             <nav class="uk-navbar-container uk-navbar-center" uk-navbar>
                 <div class="uk-navbar-center">
                     <ul class="uk-navbar-nav">
-                        <li><a href="">Instagram TOP 9 of 2020</a></li>
+                        <li><a href="/">Instagram TOP 9 of 2020</a></li>
                     </ul>
                 </div>
             </nav>
@@ -77,7 +77,7 @@
         var fd = new FormData();
         fd.append('recaptcha_token', token);
         $.ajax({
-            url: 'https://api.top9.space/v1/ig/' + $username,
+            url: 'https://api.top9.space/v2/ig/' + $username,
             data: fd,
             processData: false,
             contentType: false,
@@ -86,7 +86,7 @@
                 console.log(resp);
                 if (resp.code === 0) {
                     console.log("success");
-                    window.location.href = '/process.html?u=' + $username;
+                    window.location.href = '/process.html?u=' + $username+"&c="+resp.data;
                 } else {
                     console.log("失敗");
                 }

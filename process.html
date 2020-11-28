@@ -26,7 +26,7 @@
             <nav class="uk-navbar-container uk-navbar-center" uk-navbar>
                 <div class="uk-navbar-center">
                     <ul class="uk-navbar-nav">
-                        <li><a href="">Instagram TOP 9 of 2020</a></li>
+                        <li><a href="/">Instagram TOP 9 of 2020</a></li>
                     </ul>
                 </div>
             </nav>
@@ -51,6 +51,8 @@
     var try_count = 0;
     const urlParams = new URLSearchParams(window.location.search);
     var username = urlParams.get('u');
+    var c = urlParams.get('c');
+
     start_schedule(username, 0);
 
     function start_schedule(username, delay_time) {
@@ -69,7 +71,7 @@
         }
         console.log(username);
         $.ajax({
-            url: 'https://api.top9.space/v1/ig/' + username,
+            url: 'https://api.top9.space/v2/ig/' + username + "?c=" + c,
             processData: false,
             contentType: false,
             type: 'GET',
@@ -77,11 +79,15 @@
                 if (resp.code === 0) {
                     keep_query = false;
                     //$("#working").hide();
-                    window.location.href = '/preview.html?u=' + username;
+                    window.location.href = '/preview.html?u=' + username + "&c=" + c;
                 } else {
                     console.log("fail to collect posts");
                     start_schedule(username, delay);
                 }
+            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(textStatus);
+                console.log(errorThrown);
+                    window.location.href = '/';
             }
         });
 
