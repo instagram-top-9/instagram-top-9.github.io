@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <title>Container - UIkit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://getuikit.com/css/theme.css?1333">
+
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js" defer=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js" defer=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js" defer=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.1.3/vue-router.min.js" defer=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-42150424-1" async=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script data-ad-client="ca-pub-9862173367747325" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+</head>
+
+<body>
+    <div class="g-recaptcha" data-sitekey="6LdgJusZAAAAADp9p22bMRgFQJ0hebbTXptaR2Hy" data-callback="onSubmit"
+        data-size="invisible">
+    </div>
+    <div class="uk-hieght-medium">
+        <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+            <nav class="uk-navbar-container" uk-navbar>
+                <div class="uk-navbar-center">
+                    <ul class="uk-navbar-nav">
+
+                        <li><a href="">UIKIT</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="uk-position-center-left" style="right: 0;">
+            <div class="uk-container uk-container-expand">
+                <div style="width:90%" class="uk-position-center">
+                    <form class="uk-position-center">
+                        <div>
+                            <span class="uk-text-small uk-align-center">Here is a text</span>
+                            <div uk-form-custom>
+                            </div>
+                        </div>
+                        <div class="uk-card uk-card-default uk-card-body uk-margin uk-align-center" uk-margin>
+                            <div uk-form-custom="target: true">
+                                <input class="uk-input uk-form-width-middle" required="required" id="username"
+                                    name="username" type="text" placeholder="your username here">
+                            </div>
+                            <button class="uk-button uk-button-default" id="btn_continue"
+                                name="btn_continue">Continue</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>    
+    $('#btn_continue').click(function (event) {
+        event.preventDefault();
+        grecaptcha.execute();
+
+    })
+
+    var onSubmit = function (token) {
+        console.log(token);
+        if (token == "") {
+            return;
+        }
+        $username = $('#username').val();
+        var fd = new FormData();
+        fd.append('recaptcha_token', token);
+        $.ajax({
+            url: 'http://54.187.219.232/v1/ig/' + $username,
+            data: fd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (resp) {
+                console.log(resp);
+                if (resp.code === 0) {
+                    console.log("success");
+                    window.location.href = '/process.html?u=' + $username;
+                } else {
+                    console.log("失敗");
+                }
+            }
+        });
+    };
+
+</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</html>
