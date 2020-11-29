@@ -80,13 +80,24 @@
     function start() {
 
         $.ajax({
-            url: 'https://api.top9.space/v2/ig/' + username+"?c="+c,
+            url: 'https://api.top9.space/v2/ig/' + username + "?c=" + c,
             processData: false,
             contentType: false,
             type: 'GET',
             success: function (resp) {
-                if (resp.code != 0) {
-                    return;
+                if (resp.code === 2) {
+                    keep_query = false;
+                    UIkit.notification({
+                        message: username + ' seems like a private account😢. Please set to PUBLIC to continue🥳.',
+                        status: 'danger',
+                        timeout: 6000
+                    });
+                    setTimeout(function () {
+                        window.location.href = '/';
+                    }, 7000);
+
+                } else {
+                    window.location.href = '/';
                 }
                 length = resp.data.post_list.length;
                 if (length == 0) {
@@ -98,7 +109,7 @@
             }, error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log(textStatus);
                 console.log(errorThrown);
-                    window.location.href = '/';
+                window.location.href = '/';
             }
         });
     }
