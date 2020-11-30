@@ -1,9 +1,24 @@
 <html>
 
-<head>
-    <title>Get your top 9 on Instagram of 2020! | Best 2020</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head lang="en">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>Get your top 9 on Instagram of 2020! | Best 2020</title>
+        <meta property="og:title" content="Get your top 9 on Instagram of 2020! | Best 2020">
+        <meta property="og:url" content="https://top9.space">
+        <meta property="og:image" content="https://top9.space/banner.png">
+        <meta property="og:image:width" content="350">
+        <meta property="og:image:height" content="98">
+        <meta property="og:type" content="product">
+        <meta property="og:site_name" content="Best 2020">
+        <meta property="fb:app_id" content="542129432493562">
+        <meta property="fb:admins" content="158008664360385">
+        <meta name="twitter:card" content="app" />
+        <meta name="twitter:title" content="Get your top 9 on Instagram of 2020! | Best 2020" />
+        <meta name="twitter:image" content="https://top9.space/banner.png" />
+        <link rel="canonical" href="https://top9.space">
+        <link rel="shortcut icon" href="favicon.ico">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="uikit_1.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-61M5MYCX9K"></script>
@@ -96,7 +111,7 @@
                         window.location.href = '/';
                     }, 7000);
 
-                } else {
+                } else if (resp.code != 0) {
                     window.location.href = '/';
                 }
                 length = resp.data.post_list.length;
