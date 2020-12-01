@@ -59,7 +59,16 @@
                     </div>
                 </div>
                 <p id="heading" style="text-align: center;" class="uk-h1 tm-heading-fragment">
-                    <br><a id="a_download" name="a_download" class="uk-button uk-button-default">Download</a></p>
+                    <br><a id="a_download" name="a_download" class="uk-button uk-button-default">Download</a>
+                    Share with:
+                    <a id="share_fb" name="share_fb" target="_blank"><img src="/icon_fb.png" alt="Facebook"></a>
+                    <a id="share_line" target="_blank"><img src="/icon_line.png" alt="LINE"></a>
+                    <!-- <a id="share_pinterest" target="_blank"><img src="/icon_pinterest.png" alt="Pinterest"></a> -->
+                    <a id="share_tweet" target="_blank"><img src="/icon_twitter.png" alt="Twitter"></a>
+                    <a id="share_whatsapp" target="_blank"><img width="32px" src="/icon_whatsall.png"
+                            alt="Whatsapp"></a>
+                </p>
+
 
             </form>
 
@@ -67,22 +76,20 @@
 
     </div>
     <canvas id="targetCanvas" width="1080" height="1500" hidden></canvas>
-    <div id="fb-root"></div>
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="fb-share-button" data-href="https://instagram-top-9.github.io/top9/" data-layout="button_count">
-    </div>
+
 </body>
+
 <script>
     const urlParams = new URLSearchParams(window.location.search);
     var username = urlParams.get('u');
     var c = urlParams.get('c');
     var sources = [];
+    var share_url = escape("https://top9.space/preview.html?u=" + username + "&c=" + c);
+    $("#share_fb").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https://top9.space/preview.html?u=" + username + "&c=" + c);
+    $("#share_line").attr("href", "https://line.naver.jp/R/msg/text/?" + share_url);
+    $("#share_pinterest").attr("href", "https://pinterest.com/pin/create/link/?url=" + share_url);
+    $("#share_tweet").attr("href", "https://twitter.com/intent/tweet/?url=" + share_url);
+    $("#share_whatsapp").attr("href", "whatsapp://send?" + share_url);
 
     $(document).ready(function () {
         WebFontConfig = {
@@ -329,6 +336,8 @@
 
             $("#a_download").attr("href", img);
             $("#a_download").attr("download", username + "_top9_of_2020");
+
+
         });
     }
 
