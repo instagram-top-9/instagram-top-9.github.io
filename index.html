@@ -17,7 +17,8 @@
     <meta name="twitter:title" content="Get your top 9 on Instagram of 2020! | Best 2020" />
     <meta name="twitter:image" content="https://top9.space/banner.png" />
     <link rel="canonical" href="https://top9.space">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="uikit_1.css">
@@ -46,38 +47,47 @@
             <nav class="uk-navbar-container uk-navbar-center" uk-navbar>
                 <div class="uk-navbar-center">
                     <ul class="uk-navbar-nav">
-                        <li><a href="/"><h1 style="font-size: 20px;">Instagram TOP 9 of 2020</h1></a></li>
+                        <li><a href="/">
+                                <h1 style="">TOP 9 of Instagram 2020</h1>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
         </div>
         <div class="uk-position-center-left" style="right: 0;">
-            <div class="uk-container uk-container-expand">
-                <div style="width:90%" class="uk-position-center">
-                    <form class="uk-position-center">
+            <div style="width:90%" class="uk-position-center">
+                <form class="uk-position-center">
+                    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                        <div class="uk-card-media-left uk-cover-container">
+                            <img src="sample.jpg" alt="" style="opacity: 0.5;" uk-cover>
+                            <canvas width="600" height="400"></canvas>
+                        </div>
                         <div>
-                        </div>
-                        <div class="uk-card uk-card-default uk-card-body uk-margin uk-align-center" uk-margin>
-                            <div>
-                                <span class="uk-text-small uk-text-center">💡 Don't foget to set your Instagram account to</span>
+                            <div class="uk-card-body">
+                                <span class="uk-text-small uk-text-center">💡 Don't foget to set your Instagram account
+                                    to</span>
                                 <span class="uk-text-secondary uk-text-danger">PUBLIC</span>
-                            </div>
-                            <div uk-form-custom="target: true">
+                                <div class="uk-width-1-2@s">
                                 <input class="uk-input uk-form-width-middle" required="required" id="username"
-                                    name="username" type="text" placeholder="your username here">
-                            </div>
-                            <button class="uk-button uk-button-default" id="btn_continue"
-                                name="btn_continue">Continue</button>
-                               
-                        </div>
-                        <h1 id="heading" style="color: #666666;font-size: 14px;" class="uk-h1 tm-heading-fragment"><br>Create and grid your top nine Instagram life!    Share with friends about your amazing collage of 2020.</h1>
+                                    name="username" type="text" placeholder="your username here"></div>
+                                <button class="uk-button uk-button-default " id="btn_continue"
+                                    name="btn_continue">Continue</button>
 
-                    </form>
-                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 id="heading" style="text-align: center; color: #666666;font-size: 14px;" class="uk-h1 tm-heading-fragment">
+                        <br>Create and grid your top nine Instagram life! Share with friends about your amazing collage
+                        of 2020.</h1>
+
+                </form>
+
             </div>
-            
+
         </div>
-        
+
     </div>
 </body>
 

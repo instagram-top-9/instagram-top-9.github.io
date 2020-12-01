@@ -1,24 +1,25 @@
 <html>
 
-    <head lang="en">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <title>Get your top 9 on Instagram collage of 2020! | Best 2020 GRID</title>
-        <meta property="og:title" content="Get your top 9 on Instagram of 2020! | Best 2020">
-        <meta property="og:url" content="https://top9.space">
-        <meta property="og:image" content="https://top9.space/banner.png">
-        <meta property="og:image:width" content="350">
-        <meta property="og:image:height" content="98">
-        <meta property="og:type" content="product">
-        <meta property="og:site_name" content="Best 2020">
-        <meta property="fb:app_id" content="542129432493562">
-        <meta property="fb:admins" content="158008664360385">
-        <meta name="twitter:card" content="app" />
-        <meta name="twitter:title" content="Get your top 9 on Instagram of 2020! | Best 2020" />
-        <meta name="twitter:image" content="https://top9.space/banner.png" />
-        <link rel="canonical" href="https://top9.space">
-        <link rel="shortcut icon" href="favicon.ico">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="mobile-web-app-capable" content="yes">
+<head lang="en">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Get your top 9 on Instagram collage of 2020! | Best 2020 GRID</title>
+    <meta property="og:title" content="Get your top 9 on Instagram of 2020! | Best 2020">
+    <meta property="og:url" content="https://top9.space">
+    <meta property="og:image" content="https://top9.space/banner.png">
+    <meta property="og:image:width" content="350">
+    <meta property="og:image:height" content="98">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="Best 2020">
+    <meta property="fb:app_id" content="542129432493562">
+    <meta property="fb:admins" content="158008664360385">
+    <meta name="twitter:card" content="app" />
+    <meta name="twitter:title" content="Get your top 9 on Instagram of 2020! | Best 2020" />
+    <meta name="twitter:image" content="https://top9.space/banner.png" />
+    <link rel="canonical" href="https://top9.space">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="uikit_1.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-61M5MYCX9K"></script>
@@ -52,14 +53,18 @@
                     <div class="uk-container uk-container-small uk-width-large">
                         <div class="uk-card uk-card-default ">
                             <a id="download" name="download" href="" download="AwesomeImage.png">
-                                <img class="" id="preview" name="preview" uk-img />
+                                <img class="" id="preview" name="preview" />
                             </a>
                         </div>
                     </div>
-
                 </div>
+                <p id="heading" style="text-align: center;" class="uk-h1 tm-heading-fragment">
+                    <br><a id="a_download" name="a_download" class="uk-button uk-button-default">Download</a></p>
+
             </form>
+
         </div>
+
     </div>
     <canvas id="targetCanvas" width="1080" height="1500" hidden></canvas>
     <div id="fb-root"></div>
@@ -321,6 +326,9 @@
             $("#preview").attr("src", img);
             $("#download").attr("href", img);
             $("#download").attr("download", username + "_top9_of_2020");
+
+            $("#a_download").attr("href", img);
+            $("#a_download").attr("download", username + "_top9_of_2020");
         });
     }
 

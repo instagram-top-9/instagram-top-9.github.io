@@ -155,8 +155,6 @@ figure {
 	margin-top: 20px
 }
 
-h1,
-.uk-h1,
 h2,
 .uk-h2,
 h3,
@@ -179,8 +177,7 @@ h6,
 	text-transform: none
 }
 
-*+h1,
-*+.uk-h1,
+
 *+h2,
 *+.uk-h2,
 *+h3,
@@ -199,11 +196,6 @@ h6,
 	margin-top: 40px
 }
 
-h1,
-.uk-h1 {
-	font-size: 20px;
-	line-height: 1.2;
-}
 
 h2,
 .uk-h2 {
@@ -235,16 +227,6 @@ h6,
 	line-height: 1.4
 }
 
-@media (min-width:960px) {
-	h1,
-	.uk-h1 {
-		font-size: 38px
-	}
-	h2,
-	.uk-h2 {
-		font-size: 30px
-	}
-}
 
 ul,
 ol {
@@ -2334,14 +2316,7 @@ select.uk-form-width-xsmall {
 	color: #f0506e
 }
 
-.uk-alert h1,
-.uk-alert h2,
-.uk-alert h3,
-.uk-alert h4,
-.uk-alert h5,
-.uk-alert h6 {
-	color: inherit
-}
+
 
 .uk-alert a:not([class]) {
 	color: inherit;
@@ -7577,91 +7552,18 @@ iframe.uk-cover {
 	color: #fff
 }
 
-.uk-light h1,
-.uk-light .uk-h1,
-.uk-light h2,
-.uk-light .uk-h2,
-.uk-light h3,
-.uk-light .uk-h3,
-.uk-light h4,
-.uk-light .uk-h4,
-.uk-light h5,
-.uk-light .uk-h5,
-.uk-light h6,
-.uk-light .uk-h6,
 .uk-light .uk-heading-small,
 .uk-light .uk-heading-medium,
 .uk-light .uk-heading-large,
 .uk-light .uk-heading-xlarge,
 .uk-light .uk-heading-2xlarge,
-.uk-section-primary:not(.uk-preserve-color) h1,
-.uk-section-primary:not(.uk-preserve-color) .uk-h1,
-.uk-section-primary:not(.uk-preserve-color) h2,
-.uk-section-primary:not(.uk-preserve-color) .uk-h2,
-.uk-section-primary:not(.uk-preserve-color) h3,
-.uk-section-primary:not(.uk-preserve-color) .uk-h3,
-.uk-section-primary:not(.uk-preserve-color) h4,
-.uk-section-primary:not(.uk-preserve-color) .uk-h4,
-.uk-section-primary:not(.uk-preserve-color) h5,
-.uk-section-primary:not(.uk-preserve-color) .uk-h5,
-.uk-section-primary:not(.uk-preserve-color) h6,
-.uk-section-primary:not(.uk-preserve-color) .uk-h6,
+
 .uk-section-primary:not(.uk-preserve-color) .uk-heading-small,
 .uk-section-primary:not(.uk-preserve-color) .uk-heading-medium,
 .uk-section-primary:not(.uk-preserve-color) .uk-heading-large,
 .uk-section-primary:not(.uk-preserve-color) .uk-heading-xlarge,
 .uk-section-primary:not(.uk-preserve-color) .uk-heading-2xlarge,
-.uk-section-secondary:not(.uk-preserve-color) h1,
-.uk-section-secondary:not(.uk-preserve-color) .uk-h1,
-.uk-section-secondary:not(.uk-preserve-color) h2,
-.uk-section-secondary:not(.uk-preserve-color) .uk-h2,
-.uk-section-secondary:not(.uk-preserve-color) h3,
-.uk-section-secondary:not(.uk-preserve-color) .uk-h3,
-.uk-section-secondary:not(.uk-preserve-color) h4,
-.uk-section-secondary:not(.uk-preserve-color) .uk-h4,
-.uk-section-secondary:not(.uk-preserve-color) h5,
-.uk-section-secondary:not(.uk-preserve-color) .uk-h5,
-.uk-section-secondary:not(.uk-preserve-color) h6,
-.uk-section-secondary:not(.uk-preserve-color) .uk-h6,
-.uk-section-secondary:not(.uk-preserve-color) .uk-heading-small,
-.uk-section-secondary:not(.uk-preserve-color) .uk-heading-medium,
-.uk-section-secondary:not(.uk-preserve-color) .uk-heading-large,
-.uk-section-secondary:not(.uk-preserve-color) .uk-heading-xlarge,
-.uk-section-secondary:not(.uk-preserve-color) .uk-heading-2xlarge,
-.uk-tile-primary:not(.uk-preserve-color) h1,
-.uk-tile-primary:not(.uk-preserve-color) .uk-h1,
-.uk-tile-primary:not(.uk-preserve-color) h2,
-.uk-tile-primary:not(.uk-preserve-color) .uk-h2,
-.uk-tile-primary:not(.uk-preserve-color) h3,
-.uk-tile-primary:not(.uk-preserve-color) .uk-h3,
-.uk-tile-primary:not(.uk-preserve-color) h4,
-.uk-tile-primary:not(.uk-preserve-color) .uk-h4,
-.uk-tile-primary:not(.uk-preserve-color) h5,
-.uk-tile-primary:not(.uk-preserve-color) .uk-h5,
-.uk-tile-primary:not(.uk-preserve-color) h6,
-.uk-tile-primary:not(.uk-preserve-color) .uk-h6,
-.uk-tile-primary:not(.uk-preserve-color) .uk-heading-small,
-.uk-tile-primary:not(.uk-preserve-color) .uk-heading-medium,
-.uk-tile-primary:not(.uk-preserve-color) .uk-heading-large,
-.uk-tile-primary:not(.uk-preserve-color) .uk-heading-xlarge,
-.uk-tile-primary:not(.uk-preserve-color) .uk-heading-2xlarge,
-.uk-tile-secondary:not(.uk-preserve-color) h1,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-h1,
-.uk-tile-secondary:not(.uk-preserve-color) h2,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-h2,
-.uk-tile-secondary:not(.uk-preserve-color) h3,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-h3,
-.uk-tile-secondary:not(.uk-preserve-color) h4,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-h4,
-.uk-tile-secondary:not(.uk-preserve-color) h5,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-h5,
-.uk-tile-secondary:not(.uk-preserve-color) h6,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-h6,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-heading-small,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-heading-medium,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-heading-large,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-heading-xlarge,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-heading-2xlarge,
+
 .uk-card-primary.uk-card-body h1,
 .uk-card-primary.uk-card-body .uk-h1,
 .uk-card-primary.uk-card-body h2,
