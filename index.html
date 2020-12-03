@@ -103,7 +103,7 @@
         if (token == "") {
             return;
         }
-        $username = $('#username').val();
+        $username = $('#username').val().trim();
         var fd = new FormData();
         fd.append('recaptcha_token', token);
         $.ajax({

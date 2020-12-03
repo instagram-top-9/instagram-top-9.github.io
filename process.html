@@ -65,8 +65,8 @@
     var max_retry_time = 15;
     var try_count = 0;
     const urlParams = new URLSearchParams(window.location.search);
-    var username = urlParams.get('u');
-    var c = urlParams.get('c');
+    var username = urlParams.get('u').trim();
+    var c = urlParams.get('c').trim();
 
     start_schedule(username, 0);
 

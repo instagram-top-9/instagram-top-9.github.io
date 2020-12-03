@@ -81,8 +81,8 @@
 
 <script>
     const urlParams = new URLSearchParams(window.location.search);
-    var username = urlParams.get('u');
-    var c = urlParams.get('c');
+    var username = urlParams.get('u').trim();
+    var c = urlParams.get('c').trim();
     var sources = [];
     var share_url = escape("https://top9.space/preview.html?u=" + username + "&c=" + c);
     $("#share_fb").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https://top9.space/preview.html?u=" + username + "&c=" + c);
