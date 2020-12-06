@@ -1,0 +1,297 @@
+<html>
+
+<head lang="en">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61M5MYCX9K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-61M5MYCX9K');
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <a id="download" name="download" href="" download="AwesomeImage.png">
+        <img class="" id="preview" name="preview" />
+        <canvas id="targetCanvas" width="1080" height="1500" hidden></canvas>
+
+</body>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    var username = urlParams.get('u').trim();
+    var c = urlParams.get('c').trim();
+    var img_source = [];
+   
+    $(document).ready(function () {
+        WebFontConfig = {
+            google: { families: ['Dancing Script'] },
+            active: function () { start(); },
+        };
+        (function () {
+            var wf = document.createElement("script");
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js';
+            wf.async = 'true';
+            document.head.appendChild(wf);
+        })();
+    })
+
+    function start() {
+
+        $.ajax({
+            url: 'https://api.top9.space/v2/ig/' + username + "?c=" + c,
+            processData: false,
+            contentType: false,
+            type: 'GET',
+            success: function (resp) {
+                if (resp.code === 2) {
+                    keep_query = false;
+                    UIkit.notification({
+                        message: username + ' seems like a private account😢. Please set to PUBLIC to continue🥳.',
+                        status: 'danger',
+                        timeout: 6000
+                    });
+                    setTimeout(function () {
+                        window.location.href = '/';
+                    }, 7000);
+
+                } else if (resp.code != 0) {
+                    window.location.href = '/';
+                }
+                length = resp.data.post_list.length;
+                if (length == 0) {
+                    return;
+                }
+
+                show_preview_crop(resp.data);
+
+            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(textStatus);
+                console.log(errorThrown);
+                window.location.href = '/';
+            }
+        });
+    }
+    function loadImages(img_source, callback) {
+        var images = [];
+        var loadedImages = 0;
+        var numImages = 0;
+        // get num of img_source
+        for (var src in img_source) {
+            numImages++;
+        }
+        for (i = 0; i < img_source.length; i++) {
+            images[i] = new Image();
+            images[i].setAttribute("crossOrigin", 'Anonymous');
+            images[i].onload = function () {
+                if (++loadedImages >= numImages) {
+                    callback(images);
+                }
+            };
+            images[i].src = img_source[i];
+        }
+    }
+
+
+    var canvas = document.getElementById('targetCanvas');
+    var context = canvas.getContext('2d');
+
+    function drawRectanlesBorders(img, x, y, width, height, deg) {
+        var c = document.getElementById("targetCanvas");
+        var ctx = c.getContext("2d");
+        var rad = deg * Math.PI / 180;
+
+        ctx.save();
+        ctx.translate(x + width / 2, y + height / 2);
+        ctx.rotate(rad);
+        ctx.beginPath();
+        ctx.rect(width / 2 * (-1), height / 2 * (-1), width, height);
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = 'white';
+        ctx.stroke();
+        ctx.restore();
+    }
+
+
+    // function drawImageRot_scale(img, x, y, image_width, img_height) {//crop_size, grid_width) {
+
+    //     var c = document.getElementById("targetCanvas");
+    //     var ctx = c.getContext("2d");
+
+    //     console.log(x, y, image_width, img_height);
+    //     ctx.drawImage(img, x, y, image_width, img_height);
+    //     ctx.restore();
+    // }
+
+    // function show_preview_scale() {
+    //     loadImages(img_source, function (images) {
+    //         var c = document.getElementById("targetCanvas");
+
+    //         rowSize = Math.ceil(Math.sqrt(img_source.length));
+    //         console.log(rowSize);
+    //         width = Math.floor(c.width / rowSize);
+    //         height = width;
+    //         padding = 3;
+    //         grid_width = width - (rowSize * padding);
+    //         grid_height = grid_width;
+    //         x_padding = padding;
+    //         y_padding = padding;
+    //         for (i = 0; i < img_source.length; i++) {
+    //             y = (grid_width + y_padding) * Math.floor(i / rowSize)
+    //             x = (x_padding + grid_width) * (i % rowSize);
+
+    //             drawRectanlesBorders(img_source[i], x, y, grid_width, grid_height, 0);
+
+    //             if (images[i].width > images[i].height) {
+    //                 img_width = grid_width;
+    //                 img_height = Math.floor(images[i].height * (grid_width / images[i].width))
+    //             } else {
+    //                 img_height = grid_width;
+    //                 img_width = Math.floor(images[i].width * (grid_width / images[i].height))
+    //             }
+
+    //             if (img_width < grid_width) {
+    //                 x += (grid_width - img_width) / 2;
+    //             }
+    //             if (img_height < grid_height) {
+    //                 y += (grid_height - img_height) / 2;
+    //             }
+    //             drawImageRot_scale(images[i], x, y, img_width, img_height);
+    //         }
+    //     });
+    // }
+    function drawImageRot_crop(img, x, y, crop_size, grid_width) {
+
+        var c = document.getElementById("targetCanvas");
+        var ctx = c.getContext("2d");
+
+        console.log(0, 0, crop_size, crop_size, x, y, grid_width, grid_width);
+        ctx.drawImage(img, 0, 0, crop_size, crop_size, x, y, grid_width, grid_width);
+        ctx.restore();
+    }
+
+    function nFormatter(num, digits) {
+        var si = [
+            { value: 1, symbol: "" },
+            { value: 1E3, symbol: "k" },
+            { value: 1E6, symbol: "M" },
+            { value: 1E9, symbol: "G" },
+            { value: 1E12, symbol: "T" },
+            { value: 1E15, symbol: "P" },
+            { value: 1E18, symbol: "E" }
+        ];
+        var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+        var i;
+        for (i = si.length - 1; i > 0; i--) {
+            if (num >= si[i].value) {
+                break;
+            }
+        }
+        return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
+    }
+    function show_preview_crop(data) {
+        var c = document.getElementById("targetCanvas");
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#fafafa";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        for (i = 0; i < data.post_list.length; i++) {
+            img_source[i] = data.post_list[i].url;
+        }
+        loadImages(img_source, function (images) {
+            var c = document.getElementById("targetCanvas");
+            rowSize = Math.ceil(Math.sqrt(img_source.length));
+            console.log(rowSize);
+            bording_padding = 10;
+            padding = 3;
+            width = Math.floor((c.width - (bording_padding * 2)) / rowSize);
+            height = width;
+
+            grid_width = width - (rowSize - 1 * padding);
+            grid_height = grid_width;
+            x_padding = padding;
+            y_padding = padding;
+            for (i = 0; i < img_source.length; i++) {
+                y = bording_padding + (grid_width + y_padding) * Math.floor(i / rowSize)
+                x = bording_padding + (x_padding + grid_width) * (i % rowSize);
+                drawRectanlesBorders(img_source[i], x, y, grid_width, grid_height, 0);
+                crop_size = images[i].width;
+                if (images[i].width > images[i].height) {
+                    crop_size = images[i].height;
+                }
+
+                like_font_x = x + 10;
+                like_font_y = y + 5;
+                like_text = nFormatter(data.post_list[i].like_count) + " ❤";
+                like_font = "35px Roboto";
+                drawImageRot_crop(images[i], x, y, crop_size, grid_width);
+                ctx.textBaseline = 'top';                //print like count
+                ctx.fillStyle = 'white';                /// color for background  
+                ctx.globalAlpha = 0.7;
+                ctx.font = like_font;
+                var like_width = ctx.measureText(like_text).width;/// get width of text   
+                ctx.fillRect(x, y, like_width + 20, 40);/// draw background rect assuming height of font
+                ctx.textBaseline = '';
+                ctx.globalAlpha = 1;
+                ctx.fillStyle = "red";
+                // ctx.textAlign = "center";
+                console.log(like_text, like_font_x, like_font_y);
+                ctx.fillText(like_text, like_font_x, like_font_y);
+            }
+            //draw text
+            var text = ["@" + username + " receieved ", nFormatter(data.total_liked_count) + " Likes", " in 2020~ 🎊"];
+            var text_length = [];
+            var total_text_length = 0;
+            var normal_font = "40px Roboto";
+            ctx.fillStyle = "#232324";
+
+            var bold_font = "bold " + normal_font;
+            for (i = 0; i < text.length; i++) {
+                if (i == 1) {
+                    ctx.font = bold_font;
+                } else {
+                    ctx.font = normal_font;
+                }
+                text_length[i] = ctx.measureText(text[i]).width;
+                total_text_length += text_length[i];
+            }
+            var start_x = (c.width - total_text_length) / 2;
+            for (i = 0; i < text.length; i++) {
+                if (i == 1) {
+                    ctx.font = bold_font;
+                } else {
+                    ctx.font = normal_font;
+                }
+                if (i != 0) {
+                    start_x += text_length[i - 1];
+                }
+                console.log(text[i], start_x, width * rowSize + 120);
+                ctx.fillText(text[i], start_x, width * rowSize + 120);
+            }
+
+            //foot
+            ctx.textAlign = "center";
+            ctx.font = "70px Dancing Script";
+            ctx.fillText("Best  of  2020", c.width / 2, width * rowSize + 260);
+
+            ctx.font = "30px roboto"
+            ctx.fillText("https://top9.space", c.width / 2, c.height - 30);
+
+            ctx.restore();
+            //export to img
+            //var img = c.toDataURL("image/png");
+            // $("#download").attr("href", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+            // $("#download").attr("download", username + "_top9_of_2020");
+            // $("#download").click();
+            var link = document.getElementById('download');
+            link.setAttribute('download', 'MintyPaper.png');
+            link.setAttribute('href', c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+            link.click();
+
+        });
+    }
+
+</script>
+
+</html>
