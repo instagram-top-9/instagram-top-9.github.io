@@ -176,53 +176,6 @@
     }
 
 
-    // function drawImageRot_scale(img, x, y, image_width, img_height) {//crop_size, grid_width) {
-
-    //     var c = document.getElementById("targetCanvas");
-    //     var ctx = c.getContext("2d");
-
-    //     console.log(x, y, image_width, img_height);
-    //     ctx.drawImage(img, x, y, image_width, img_height);
-    //     ctx.restore();
-    // }
-
-    // function show_preview_scale() {
-    //     loadImages(img_source, function (images) {
-    //         var c = document.getElementById("targetCanvas");
-
-    //         rowSize = Math.ceil(Math.sqrt(img_source.length));
-    //         console.log(rowSize);
-    //         width = Math.floor(c.width / rowSize);
-    //         height = width;
-    //         padding = 3;
-    //         grid_width = width - (rowSize * padding);
-    //         grid_height = grid_width;
-    //         x_padding = padding;
-    //         y_padding = padding;
-    //         for (i = 0; i < img_source.length; i++) {
-    //             y = (grid_width + y_padding) * Math.floor(i / rowSize)
-    //             x = (x_padding + grid_width) * (i % rowSize);
-
-    //             drawRectanlesBorders(img_source[i], x, y, grid_width, grid_height, 0);
-
-    //             if (images[i].width > images[i].height) {
-    //                 img_width = grid_width;
-    //                 img_height = Math.floor(images[i].height * (grid_width / images[i].width))
-    //             } else {
-    //                 img_height = grid_width;
-    //                 img_width = Math.floor(images[i].width * (grid_width / images[i].height))
-    //             }
-
-    //             if (img_width < grid_width) {
-    //                 x += (grid_width - img_width) / 2;
-    //             }
-    //             if (img_height < grid_height) {
-    //                 y += (grid_height - img_height) / 2;
-    //             }
-    //             drawImageRot_scale(images[i], x, y, img_width, img_height);
-    //         }
-    //     });
-    // }
     function drawImageRot_crop(img, x, y, crop_size, grid_width) {
 
         var c = document.getElementById("targetCanvas");

@@ -1,78 +1,33 @@
 <html>
 
 <head lang="en">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61M5MYCX9K"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-61M5MYCX9K');
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Dancing%20Script);
+    </style>
 </head>
 
 <body>
+    <input id="debug" type="text" name="debug" value="" />
     <a id="download" name="download" href="" download="AwesomeImage.png">
-        <img class="" id="preview" name="preview" />
-        <canvas id="targetCanvas" width="1080" height="1500" hidden></canvas>
+        <img class="" id="preview" name="preview" /></a>
+    <canvas id="targetCanvas" width="1080" height="1500" hidden></canvas>
 
 </body>
 
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    var username = urlParams.get('u').trim();
-    var c = urlParams.get('c').trim();
+
     var img_source = [];
-   
+    var username = "clhjoe";
+    var data = '{"code":0,"data":{"post_list":[{"like_count":2,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/128226650_211821187006405_6784883661190994103_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=101\u0026_nc_ohc=aLVJe7ISxeQAX8etSNG\u0026tp=1\u0026oh=610403c2bf55ede293388326b0c2d2b5\u0026oe=5FF6E75A\u0026ig_cache_key=MjQ1NDM0ODA3MDk0OTY4OTc3OQ%3D%3D.2"},{"like_count":2,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/129349433_2759594584315252_7321886149559309082_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=104\u0026_nc_ohc=5r97cbcPwP8AX-kycsW\u0026tp=1\u0026oh=68b92d04e0e377564340d9f914b82450\u0026oe=5FF6E142\u0026ig_cache_key=MjQ1NTE5MjQxNzQ5NjUyODUxMg%3D%3D.2"},{"like_count":1,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/128468430_1224167057965552_6124158763526966210_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=104\u0026_nc_ohc=pmngoXxlo9cAX-JUsvD\u0026tp=1\u0026oh=b9195a2743ce4efb87f2aea83796329a\u0026oe=5FF7A2EA\u0026ig_cache_key=MjQ1NDM1MzMxOTgxOTAyMDI2NA%3D%3D.2"},{"like_count":1,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/129064311_174761744377781_8195773196871725231_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=105\u0026_nc_ohc=ebhtBRwAcdkAX9n7LLR\u0026tp=1\u0026oh=8eb5d873cfdcb0757e315368db487088\u0026oe=5FF846A8\u0026ig_cache_key=MjQ1NDM0ODQ0ODIzNTY2NjY0NA%3D%3D.2"},{"like_count":1,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/128574994_801436494056428_1331936937856492061_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=104\u0026_nc_ohc=-JvpKrwfausAX-ZWmq6\u0026tp=1\u0026oh=a260d9739459fdc94d8f242c86dbea8a\u0026oe=5FF704CF\u0026ig_cache_key=MjQ1NDM0ODYxOTc3NDQyMzgzMQ%3D%3D.2"},{"like_count":1,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/129119995_401839144347685_1101495077940202338_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=101\u0026_nc_ohc=RxROt4yt8doAX_L0NrI\u0026tp=1\u0026oh=83511dd7471824713fe567ef11d361c6\u0026oe=5FF89BDB\u0026ig_cache_key=MjQ1NDM1MDc4NTAzMzQ5MzM4OQ%3D%3D.2"},{"like_count":1,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/128710211_150105366867288_3540725260301173733_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=100\u0026_nc_ohc=Jq6WhCBaf0QAX89rQvr\u0026tp=1\u0026oh=a9fc9cbde8b00edba07fb5307a3b5f83\u0026oe=5FF9357D\u0026ig_cache_key=MjQ1NTE5MTMzNTk2MTYzMTAwMg%3D%3D.2"},{"like_count":1,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/127098925_198012401797152_937087688091247570_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=100\u0026_nc_ohc=cV1H16SNF8YAX8Dyw3r\u0026tp=1\u0026oh=bfbcd617ac56fb19f98f00132182dcf2\u0026oe=5FF7E32F\u0026ig_cache_key=MjQ1MDEwODUzOTUwMTIzMDUzNA%3D%3D.2"},{"like_count":0,"url":"https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/129397025_1528377050701415_1946404991268665800_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com\u0026_nc_cat=111\u0026_nc_ohc=_Kk8kgYjzzIAX-souTh\u0026tp=1\u0026oh=43c0c4a69e54c2f68a2df95f1634cea3\u0026oe=5FF98193\u0026ig_cache_key=MjQ1NTE5MDU3NzMyMTIwOTY2Ng%3D%3D.2"}],"total_liked_count":10,"total_post_count":19},"url":""}';
+
     $(document).ready(function () {
-        WebFontConfig = {
-            google: { families: ['Dancing Script'] },
-            active: function () { start(); },
-        };
-        (function () {
-            var wf = document.createElement("script");
-            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js';
-            wf.async = 'true';
-            document.head.appendChild(wf);
-        })();
+        start();
     })
 
     function start() {
-
-        $.ajax({
-            url: 'https://api.top9.space/v2/ig/' + username + "?c=" + c,
-            processData: false,
-            contentType: false,
-            type: 'GET',
-            success: function (resp) {
-                if (resp.code === 2) {
-                    keep_query = false;
-                    UIkit.notification({
-                        message: username + ' seems like a private account😢. Please set to PUBLIC to continue🥳.',
-                        status: 'danger',
-                        timeout: 6000
-                    });
-                    setTimeout(function () {
-                        window.location.href = '/';
-                    }, 7000);
-
-                } else if (resp.code != 0) {
-                    window.location.href = '/';
-                }
-                length = resp.data.post_list.length;
-                if (length == 0) {
-                    return;
-                }
-
-                show_preview_crop(resp.data);
-
-            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log(textStatus);
-                console.log(errorThrown);
-                window.location.href = '/';
-            }
-        });
+        console.log("[start]" + JSON.parse(data).data);
+        show_preview_crop(JSON.parse(data).data);
     }
     function loadImages(img_source, callback) {
         var images = [];
@@ -115,53 +70,7 @@
     }
 
 
-    // function drawImageRot_scale(img, x, y, image_width, img_height) {//crop_size, grid_width) {
 
-    //     var c = document.getElementById("targetCanvas");
-    //     var ctx = c.getContext("2d");
-
-    //     console.log(x, y, image_width, img_height);
-    //     ctx.drawImage(img, x, y, image_width, img_height);
-    //     ctx.restore();
-    // }
-
-    // function show_preview_scale() {
-    //     loadImages(img_source, function (images) {
-    //         var c = document.getElementById("targetCanvas");
-
-    //         rowSize = Math.ceil(Math.sqrt(img_source.length));
-    //         console.log(rowSize);
-    //         width = Math.floor(c.width / rowSize);
-    //         height = width;
-    //         padding = 3;
-    //         grid_width = width - (rowSize * padding);
-    //         grid_height = grid_width;
-    //         x_padding = padding;
-    //         y_padding = padding;
-    //         for (i = 0; i < img_source.length; i++) {
-    //             y = (grid_width + y_padding) * Math.floor(i / rowSize)
-    //             x = (x_padding + grid_width) * (i % rowSize);
-
-    //             drawRectanlesBorders(img_source[i], x, y, grid_width, grid_height, 0);
-
-    //             if (images[i].width > images[i].height) {
-    //                 img_width = grid_width;
-    //                 img_height = Math.floor(images[i].height * (grid_width / images[i].width))
-    //             } else {
-    //                 img_height = grid_width;
-    //                 img_width = Math.floor(images[i].width * (grid_width / images[i].height))
-    //             }
-
-    //             if (img_width < grid_width) {
-    //                 x += (grid_width - img_width) / 2;
-    //             }
-    //             if (img_height < grid_height) {
-    //                 y += (grid_height - img_height) / 2;
-    //             }
-    //             drawImageRot_scale(images[i], x, y, img_width, img_height);
-    //         }
-    //     });
-    // }
     function drawImageRot_crop(img, x, y, crop_size, grid_width) {
 
         var c = document.getElementById("targetCanvas");
