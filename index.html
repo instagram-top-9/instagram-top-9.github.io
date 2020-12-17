@@ -119,6 +119,11 @@
 
 <script>
     $('#btn_continue').click(function (event) {
+        var ua = navigator.userAgent.toLowerCase();
+        var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+        if (isAndroid) {
+            window.location = 'https://play.google.com/store/apps/details?id=space.top9&utm_source=website&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1';
+        }
         event.preventDefault();
         grecaptcha.execute();
 
